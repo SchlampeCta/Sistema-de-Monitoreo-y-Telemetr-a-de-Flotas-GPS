@@ -1,5 +1,6 @@
 package modulos;
 
+//import java.io.IOException;
 import java.sql.Connection;
 import java.time.Instant;
 import java.util.HashMap;
@@ -9,26 +10,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.Duration;
 
+
 import db.mysql;
 import middleware.errores;
 
+public class controlador  {
 
 
-public class controlador {
-
-    // Conexion
-    public void listar() {
-
-        try (Connection con = mysql.conectar()) {
-
-            System.out.println("✅ Conectado");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Guardar ubicacion
+    // Guardar ubicacion / POST
 
     public String guardarUbicacion(
             String vehiculoId,
@@ -195,7 +184,7 @@ public class controlador {
 
     }
 
-    //Eliminar vehiculo
+    // Eliminar vehiculo
 
     public String eliminar(String vehiculoId) {
 
@@ -228,7 +217,6 @@ public class controlador {
             return "500";
         }
     }
-
 
     public String obtenerVehiculos() {
 
@@ -297,3 +285,4 @@ public class controlador {
     }
 
 }
+

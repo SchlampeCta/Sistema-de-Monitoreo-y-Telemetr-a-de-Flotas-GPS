@@ -74,7 +74,13 @@ Validar datos.
 
 8.Uso gemini: Conexión bakend y frontend. Sugerencia la forma más nativa y limpia de hacerlo en Java es utilizando la librería nativa com.sun.net.httpserver.HttpServer e incorporando una dependencia ligera como Gson para poder responder en formato JSON . necesitas un Servidor HTTP que traduzca esas peticiones de la red y ejecute tu controlador.
 
-9. Dentro de las prompts cuando le indicaba alguna instrucción, una de ellas era que mezclaba los front y sus diversas carpetas yo le indique que me mantuviera ese orden. Otro fue en la verificacion de espacios en blando, la IA usaba isBalck() esa una version mejorada del isEmpty pero que no funciona en versiones inferiores a la 8 (Que es la que manejo actualmente) 
+9. Uso ChatGPT: Dentro de las prompts cuando le indicaba alguna instrucción:
+    9.1 Mezclaba los front y sus diversas carpetas yo le indique que me mantuviera el orden por el que empece. 
+    9.2 La verificacion de espacios en blanco, la IA usaba isBalck() esa una version mejorada del isEmpty pero que no funciona en versiones inferiores a la 8 (Que es la que manejo actualmente)
+    9.3 Inicialmente habia dejado una funcion null que era actualizarHora en api.js lo que genero errores, fue necesario verificar la funcion.
+    9.4 Queria que incluyera javax.servlet cuando ya estaba manejando HttpServer
+
+10. Uso ChatGPT: Indicacion para el script de simulacion (Sugerencias: FrontEnd o Node)
 
 
 

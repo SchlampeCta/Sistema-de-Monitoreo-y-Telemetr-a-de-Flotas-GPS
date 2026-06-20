@@ -1,6 +1,16 @@
 //Conexion backEnd Y frontEnd
 const API_URL = "http://localhost:8080";
 
+//CORS por bloqueo
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+
+app.use(cors());        
+app.use(express.json()); 
+app.options("*", cors());
+
 
 
 //Consulta backend actualizacion vehiculo

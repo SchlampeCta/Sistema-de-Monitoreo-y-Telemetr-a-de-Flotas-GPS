@@ -3,6 +3,7 @@ import java.net.InetSocketAddress;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;
+
 //import java.io.IOException;
 import java.io.OutputStream;
 //import java.net.InetSocketAddress;
@@ -16,28 +17,34 @@ public class App {
 
        //Instancia clase controlador
         
-        controlador c = new controlador();
-
-        System.out.println(
-            c.guardarUbicacion(
-                "VH-001",
-                4.7110,
-                -74.0721,
-                "2025-06-01T10:00:00Z"
-            )
-        );
-
+         controlador c = new controlador();
+         
+         System.out.println(
+          c.guardarUbicacion(
+         "VH-001",
+         4.7110,
+         -74.0721,
+         "2026-06-01T10:00:00Z"
+          )
+          );
+         
         // servidor en el puerto 8080 
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
 
         // Creamos la ruta /vehicles 
         server.createContext("/vehicles", new VehiclesHandler());
+         //creamos la ruta /gps
+        server.createContext("/gps", new GpsHandler());
 
         server.setExecutor(null); 
         System.out.println("🚀 Servidor HTTP Backend corriendo en http://localhost:8080/vehicles");
         server.start();
         
     }
+
+
+       
+
 
         static class VehiclesHandler implements HttpHandler {
         @Override
@@ -73,4 +80,34 @@ public class App {
 
     }
 
+
+    static class GpsHandler implements HttpHandler {
+
+        @Override
+        public void handle(HttpExchange exchange)
+                throws IOException {
+
+            exchange.getResponseHeaders()
+                    .add("Access-Control-Allow-Origin", "*");
+
+            if (!"POST".equalsIgnoreCase(
+                    exchange.getRequestMethod())) {
+
+                exchange.sendResponseHeaders(405, -1);
+                return;
+            }
+
+            String response = "GPS recibido";
+
+            exchange.sendResponseHeaders(
+                    200,
+                    response.getBytes().length);
+
+            OutputStream os = exchange.getResponseBody();
+
+            os.write(response.getBytes());
+
+            os.close();
+        }
+    }
 }
