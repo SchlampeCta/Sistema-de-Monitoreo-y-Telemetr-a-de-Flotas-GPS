@@ -77,7 +77,7 @@ public class controlador {
             // Validar formato fecha
             Instant.parse(timestamp);
 
-            // Insertarr
+            // Insertar
             Connection con = mysql.conectar();
 
             String sql = "INSERT INTO ubicaciones (vehiculo_id, lat, lng, timestamp) VALUES (?, ?, ?, ?)";
@@ -226,6 +226,73 @@ public class controlador {
                     e.getMessage());
 
             return "500";
+        }
+    }
+
+
+    public String obtenerVehiculos() {
+
+        try {
+
+            Connection con = mysql.conectar();
+
+            String sql = "SELECT vehiculo_id, lat, lng, timestamp " +
+                    "FROM ubicaciones " +
+                    "ORDER BY timestamp DESC";
+
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            ResultSet rs = stmt.executeQuery();
+
+            StringBuilder json = new StringBuilder();
+
+            json.append("[");
+
+            boolean primero = true;
+
+            while (rs.next()) {
+
+                if (!primero) {
+                    json.append(",");
+                }
+
+                json.append("{");
+
+                json.append("\"vehiculo_id\":\"")
+                        .append(rs.getString("vehiculo_id"))
+                        .append("\",");
+
+                json.append("\"lat\":")
+                        .append(rs.getDouble("lat"))
+                        .append(",");
+
+                json.append("\"lng\":")
+                        .append(rs.getDouble("lng"))
+                        .append(",");
+
+                json.append("\"estado\":\"En movimiento\",");
+
+                json.append("\"last_seen\":\"")
+                        .append(rs.getString("timestamp"))
+                        .append("\"");
+
+                json.append("}");
+
+                primero = false;
+            }
+
+            json.append("]");
+
+            con.close();
+
+            return json.toString();
+
+        } catch (Exception e) {
+
+            errores.internalError(
+                    e.getMessage());
+
+            return "[]";
         }
     }
 

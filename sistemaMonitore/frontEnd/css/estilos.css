@@ -82,6 +82,27 @@
     text-align: center;
 }
 
+/*ESTADOS CARRO -PAGINA VEHICULOS*/
+.estado-movimiento {
+    background-color: #198754;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.estado-detenido {
+    background-color: #ffc107;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.estado-senal {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
 
 /*PAGINA MAPA*/
 
@@ -92,4 +113,3 @@
 }
 
 
-/**/

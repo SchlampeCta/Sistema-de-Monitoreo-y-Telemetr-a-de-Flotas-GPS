@@ -15,7 +15,7 @@ public class App {
        mysql.conectar();
 
        //Instancia clase controlador
-       /* 
+        
         controlador c = new controlador();
 
         System.out.println(
@@ -25,12 +25,12 @@ public class App {
                 -74.0721,
                 "2025-06-01T10:00:00Z"
             )
-        );*/
+        );
 
         // servidor en el puerto 8080 
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
 
-        // Creamos la ruta /vehicles que busca api.js
+        // Creamos la ruta /vehicles 
         server.createContext("/vehicles", new VehiclesHandler());
 
         server.setExecutor(null); 
@@ -57,11 +57,7 @@ public class App {
             if ("GET".equalsIgnoreCase(exchange.getRequestMethod())) {
                 controlador ctrl = new controlador();
                 
-                
-                ctrl.estadoVehiculo(); 
-                
-                // Construimos un JSON temporal de prueba mientras automatizas la respuesta del ResultSet
-                String jsonResponse = "[{\"vehiculo_id\":\"V1\",\"lat\":4.6097,\"lng\":-74.0817,\"estado\":\"En movimiento\"}]";
+                String jsonResponse = ctrl.obtenerVehiculos();
                 
                 // Enviamos la respuesta HTTP al Frontend
                 exchange.getResponseHeaders().set("Content-Type", "application/json; charset=UTF-8");

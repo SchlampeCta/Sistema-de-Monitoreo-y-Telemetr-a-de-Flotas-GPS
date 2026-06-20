@@ -3,57 +3,52 @@ const map = L.map('map').setView(
     12
 );
 
-
-//Dibuja el mapa
-
+// Fondo del mapa
 L.tileLayer(
-    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    'https://tile.openstreetmap.org/{z}/{x}/{y}.png', //dibuja mapa
     {
-        attribution:
-            '&copy; OpenStreetMap'
+        attribution: '&copy; OpenStreetMap'
     }
 ).addTo(map);
 
+// guarda marcadores reales
+let markers = {};
 
-//prueba
-const vehiculos = [
 
-    {
-        id: "VH001",
-        lat: 4.7110,
-        lng: -74.0721,
-        estado: "En movimiento"
-    },
 
-    {
-        id: "VH002",
-        lat: 4.7300,
-        lng: -74.0500,
-        estado: "Detenido"
-    },
-
-    {
-        id: "VH003",
-        lat: 4.6900,
-        lng: -74.1000,
-        estado: "Sin señal"
-    }
-
-];
 
 //crear marcadores
 
-vehiculos.forEach(v => {
+async function cargarVehiculos() {
+    try {
+        const res = await fetch("http://localhost:8080/vehicles");
+        const vehiculos = await res.json();
 
-    L.marker([
-        v.lat,
-        v.lng
-    ])
-        .addTo(map)
-        .bindPopup(
+        vehiculos.forEach(v => {
 
-            `<b>${v.id}</b><br>Estado: ${v.estado}`
+            if (markers[v.vehiculo_id]) {
 
-        );
+                // actualizar posición
+                markers[v.vehiculo_id].setLatLng([v.lat, v.lng]);
 
-});
+                markers[v.vehiculo_id].setPopupContent(
+                    `<b>${v.vehiculo_id}</b><br>${v.estado}`
+                );
+
+            } else {
+
+                // crear marcador nuevo
+                const marker = L.marker([v.lat, v.lng])
+                    .addTo(map)
+                    .bindPopup(
+                        `<b>${v.vehiculo_id}</b><br>${v.estado}`
+                    );
+
+                markers[v.vehiculo_id] = marker;
+            }
+        });
+
+    } catch (error) {
+        console.error("Error cargando vehículos:", error);
+    }
+}
