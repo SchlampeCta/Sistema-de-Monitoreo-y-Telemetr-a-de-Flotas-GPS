@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Monitoreo y Telemetría de Flotas GPS</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css  ">
+    
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+
+                <a class="navbar-brand" href="#">
+                    Monitoreo Vehicular
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbar">
+
+                    <ul class="navbar-nav me-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="paginas/vehiculos.html">
+                                Vehículos
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="paginas/mapa.html">
+                                Mapa
+                            </a>
+                        </li>
+                        <!--PENDIENTE PARA BORRAR - GPS.HTML-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="paginas/gps.html">
+                                Registrar GPS
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+        </nav>
+
+    </header>
+
+    
+    <main>
+        <div class="alert alert-dismissible alert-warning alerta-personalizada">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        
+            <h4 class="alert-heading alerta-titulo">¡Advertencia!</h4>
+        
+            <p class="mb-0 alerta-texto">
+                Sistema de monitoreo de vehiculos por GPS
+                <a href="#" class="alert-link alerta-enlace">Desplazate por la barra de navegación</a>.
+            </p>
+        </div>
+
+    </main>
+
+   
+    <footer>
+        <p>&copy; 2026 Sistema de Monitoreo y Telemetría de Flotas GPS. Todos los derechos reservados.</p>
+    </footer>
+
+    <!--JavaScript  ADICIONALES-->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+    </script>
+</body>
+
+</html>

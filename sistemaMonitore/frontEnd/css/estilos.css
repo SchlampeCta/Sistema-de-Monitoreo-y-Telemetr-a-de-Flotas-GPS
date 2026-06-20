@@ -1,0 +1,95 @@
+/* PAGINA PRINCIPAL*/
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+/* Espaciado de los links */
+.nav-link {
+    margin-right: 10px;
+}
+
+.nav-link:hover {
+    color: #0dcaf0 !important;
+}
+
+
+
+.alerta-personalizada {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 4px;
+    padding: 15px;
+    position: relative;
+}
+
+/*título */
+.alerta-titulo {
+    color: #856404;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-weight: bold;
+    vertical-align: inherit;
+}
+
+/* párrafo */
+.alerta-texto {
+    color: #856404;
+    font-size: 14px;
+    line-height: 1.5;
+    vertical-align: inherit;
+   
+}
+
+/* enlace dentro de la alerta */
+.alerta-enlace {
+    color: #533f03;
+    font-weight: bold;
+    text-decoration: underline;
+    vertical-align: inherit;
+}
+
+/* Efecto al pasar el mouse sobre el enlace */
+.alerta-enlace:hover {
+    color: #000000;
+}
+
+
+
+/* PAGINA VEHICULO*/
+
+.titulo-tabla {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.estado-movimiento {
+    color: green;
+    font-weight: bold;
+}
+
+.estado-detenido {
+    color: orange;
+    font-weight: bold;
+}
+
+.estado-senal {
+    color: red;
+    font-weight: bold;
+}
+
+.table {
+    text-align: center;
+}
+
+
+/*PAGINA MAPA*/
+
+#map {
+    height: 600px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+/**/
